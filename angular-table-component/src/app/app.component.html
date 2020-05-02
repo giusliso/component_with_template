@@ -1,0 +1,22 @@
+<button (click) = "authService.signIn('guest')">Login Guest</button>
+<button (click) = "authService.signIn('admin')">Login Admin</button>
+<button *appIfLogged (click) = "authService.signOut()">Logout</button>
+
+
+<h1 *appIfLogged>
+  Ciao Benvenuto
+</h1>
+
+<h1 *appRole = "'admin'">ADMIN</h1>
+
+<h1 *appRole = "'guest'" (roleDetected) = "updateMe()"> GUEST </h1>
+
+<app-table *appRole = "'admin'" [columns] = "columns" [items] = "items">
+  <div *appTableColumn = "let col" class="column">
+    {{col}} c
+  </div>
+  <div *appTableCell = "let cell; let i = 'index'" class="row">
+    {{cell | json}} {{i}}
+  </div>
+</app-table>
+

@@ -1,0 +1,10 @@
+<table>
+  <th *ngFor = "let column of columns" (click) = sortBy(column)>
+    <ng-container *ngTemplateOutlet = "templateTableColumn; context: {$implicit: column}" ></ng-container>
+  </th>
+  <tr *ngFor = "let item of items, let i = index">
+    <td *ngFor = "let column of columns" >
+     <ng-container *ngTemplateOutlet = "templateTableCell; context: {$implicit: item[column], index: i}"></ng-container>
+    </td>
+  </tr>
+</table>
